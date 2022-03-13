@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Formatter</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload = "init()">
+    <div class="workspace">
+        <canvas id="screen"></canvas>
+        <img src="" hidden id="input-file">
+    </div>
+    <div class="styling">
+        <input type="file" id="file-upload" onchange="readURL(event)" accept="image/*">
+        <div class="color-picker">
+            <input type="color" id="color-1" value="#f6e962">
+            <div class="lin-grad"></div>
+            <input type="color" id="color-2" value="#95e65d">
+            <input type="submit" onclick="addBG()" value="Go!">
+        </div>
+        <input type="button" onclick="downloadCanvas()" value="No file chosen!" id="download">
+    </div>
+</body>
+</html>
+
