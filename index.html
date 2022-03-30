@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Formatter</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Libre+Franklin:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body onload = "init()">
+    <div class="container">
+        <div class="title">
+            SS formatter
+        </div>
+        <div class="workspace">
+            <canvas id="screen"></canvas>
+            <img src="" hidden id="input-file">
+        </div>
+    </div>
+    
+    <div class="styling">
+        <div class="file-up">
+            Upload your screenshot
+            <input type="file" id="file-upload" onchange="readURL(event)" accept="image/*">
+        </div>
+        <div class="bg-select">
+            <label for="bg">Choose a background:</label><br>
+
+            <select name="bg" id="bg">
+            <option value="upload-image">Upload Image</option>
+            <option value="css-options">CSS options</option>
+            <option value="own-code">Write your own code</option>
+            </select>
+        </div>
+
+        <div class="bg-image">
+            <input type="file" id="bg-upload" onchange="readBG(event)" accept="image/*">
+        </div>
+
+        <div class="color-picker">
+            <input type="color" id="color-1" value="#f6e962">
+            <div class="lin-grad"></div>
+            <input type="color" id="color-2" value="#95e65d">
+            <input type="submit" onclick="addBG()" value="Go!">
+        </div>
+        <input type="button" onclick="downloadCanvas()" value="No file chosen!" id="download">
+    </div>
+</body>
+</html>
+
