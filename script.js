@@ -27,6 +27,41 @@ function init() {
     canvas.style.height = canvas.style.width/aspect_ratio;
     canvas.width = actual_width;
     canvas.height = actual_height;
+    const bgPicker = document.getElementById("bg");
+    bgPicker.addEventListener("change", () => {
+        let option = bgPicker.value;
+        if(option==="upload-images"){
+            let option_ = document.getElementById("bg-code");
+            option_.style.display = "none";
+
+            option_ = document.getElementById("bg-code");
+            option_.style.display = "none";
+
+            option_ = document.getElementById("bg-image");
+            option_.style.display = "block";
+        }
+        else if(option==="css-options") {
+            let option_ = document.getElementById("bg-code");
+            option_.style.display = "block";
+
+            option_ = document.getElementById("bg-code");
+            option_.style.display = "none";
+
+            option_ = document.getElementById("bg-image");
+            option_.style.display = "none";
+        }
+
+        else if(option==="own-code") {
+            let option_ = document.getElementById("bg-code");
+            option_.style.display = "block";
+
+            option_ = document.getElementById("bg-code");
+            option_.style.display = "none";
+
+            option_ = document.getElementById("bg-image");
+            option_.style.display = "none";
+        }
+    });
 
     display_width = canvas.offsetWidth;
     display_height = canvas.offsetHeight;
@@ -43,6 +78,7 @@ function init() {
     document.querySelector(".color-picker").children[1].style.background = `linear-gradient(90deg, ${colorPicker1.value} 0%, ${colorPicker2.value} 100%)`;
     colorPicker1.addEventListener("input", previewLinGrad1, false);  // 1st child is the first color picker
     colorPicker2.addEventListener("input", previewLinGrad2, false);  // 3rd child is the second color picker
+
 }
 
 function previewLinGrad1(event) {
@@ -79,6 +115,20 @@ function readURL(event) {
     document.getElementById("download").value = "Download!";
 }
 
+function readBG(event) {
+    canvas.style.background = "none";
+    let file = event.target.files[0];
+
+    let url = URL.createObjectURL(file);
+    let img = new Image();
+    img.src = url;
+    img.onload = function() {
+        canvas.style.background = "url("+this.src+")";
+    }
+    // canvas.style.backgroundSize = "cover";
+}
+
+
 function __drawImage(ctx, img) {
     let h = img.naturalHeight;
     let w = img.naturalWidth;
@@ -89,11 +139,11 @@ function __drawImage(ctx, img) {
         h = obj[1];
     }
     ctx.drawImage(img, Math.floor((centerX-w/2)/scaleX), Math.floor((centerY-h/2)/scaleY), Math.floor(w/scaleX), Math.floor(h/scaleY));
-    ctx.beginPath();
-    ctx.strokeStyle = "black";
-    ctx.lineWidth =30;
-    ctx.strokeRect(Math.floor((centerX-w/2)/scaleX), Math.floor((centerY-h/2)/scaleY), Math.floor(w/scaleX), Math.floor(h/scaleY));
-    ctx.closePath();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth =30;
+    // ctx.strokeRect(Math.floor((centerX-w/2)/scaleX), Math.floor((centerY-h/2)/scaleY), Math.floor(w/scaleX), Math.floor(h/scaleY));
+    // ctx.closePath();
 }
 
 function addBG() {

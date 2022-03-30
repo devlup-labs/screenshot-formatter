@@ -7,14 +7,40 @@
     <title>Screenshot Formatter</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Libre+Franklin:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body onload = "init()">
-    <div class="workspace">
-        <canvas id="screen"></canvas>
-        <img src="" hidden id="input-file">
+    <div class="container">
+        <div class="title">
+            SS formatter
+        </div>
+        <div class="workspace">
+            <canvas id="screen"></canvas>
+            <img src="" hidden id="input-file">
+        </div>
     </div>
+    
     <div class="styling">
-        <input type="file" id="file-upload" onchange="readURL(event)" accept="image/*">
+        <div class="file-up">
+            Upload your screenshot
+            <input type="file" id="file-upload" onchange="readURL(event)" accept="image/*">
+        </div>
+        <div class="bg-select">
+            <label for="bg">Choose a background:</label><br>
+
+            <select name="bg" id="bg">
+            <option value="upload-image">Upload Image</option>
+            <option value="css-options">CSS options</option>
+            <option value="own-code">Write your own code</option>
+            </select>
+        </div>
+
+        <div class="bg-image">
+            <input type="file" id="bg-upload" onchange="readBG(event)" accept="image/*">
+        </div>
+
         <div class="color-picker">
             <input type="color" id="color-1" value="#f6e962">
             <div class="lin-grad"></div>
